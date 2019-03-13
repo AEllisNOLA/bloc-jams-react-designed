@@ -149,7 +149,6 @@ class Album extends Component {
     }
   }
 
-  
 
   handleVolumeChange(e) {
     const newVolume = e.target.value;
