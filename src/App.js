@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
-import "./App.css";
+import "./styles/App.css";
 import Album from "./components/Album";
 import Landing from "./components/Landing";
 import Library from "./components/Library";
@@ -41,8 +41,9 @@ class App extends Component {
         <main>
           <Route exact path="/" component={Landing} />
           <Route path="/library" component={Library} />
-          <Route path="/album" component={Album} />
+          <Route path="/album/:slug" component={Album} />
         </main>
+    
       </div>
     );
   }

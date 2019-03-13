@@ -1,17 +1,10 @@
-/* NAVIGATION */
-#logo {
-  font-size: 28px;
-}
-
-.nav-item {
-  font-family: "Metrophobic", sans-serif;
-}
-
 /* LANDING PAGE */
 
+/*
 body {
   overflow: hidden;
 }
+*/
 
 .App {
   text-align: center;
@@ -24,7 +17,7 @@ h1 {
 }
 
 #landing-image {
-  background: url(./assets/img/concert-photo.jpg);
+  background: url(../assets/img/concert-photo-overlay.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -33,15 +26,7 @@ h1 {
   overflow: hidden;
 }
 
-#landing-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-height: 110vh;
-  background: rgba(0, 0, 0, 0.6);
-  padding-top: 100px;
-}
+
 
 h2 {
   font-family: "Metrophobic", sans-serif;
@@ -56,5 +41,4 @@ h3 {
   font-family: "Metrophobic", sans-serif;
   margin-top: 0;
   font-size: 1.2rem;
-  
 }
