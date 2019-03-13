@@ -1,0 +1,33 @@
+#album-cover-art {
+  width: 250px;
+}
+
+.album-cover {
+  width: 250px;
+}
+
+#album-title {
+  font-family: "Metrophobic", sans-serif;
+  color: black;
+  font-size: 1.75rem;
+  margin: 5px 0;
+  padding: 0px;
+}
+
+.artist {
+  font-family: "Metrophobic", sans-serif;
+  color: black;
+  font-size: 1.5rem;
+  margin: 5px 0;
+  padding: 0px;
+}
+
+#release-info {
+  font-family: "Metrophobic", sans-serif;
+  color: black;
+  font-size: 1.25rem;
+}
+
+#album-container {
+  padding-bottom: 50px;
+}
