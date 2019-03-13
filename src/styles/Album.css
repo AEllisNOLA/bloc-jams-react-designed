@@ -28,7 +28,14 @@
   font-size: 1.25rem;
 }
 
+.metadata {
+  font-family: "Metrophobic", sans-serif;
+  color: black;
+  font-size: 1.1rem;
+}
+
 #album-container {
   padding-bottom: 50px;
 }
+
 

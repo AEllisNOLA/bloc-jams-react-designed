@@ -20,7 +20,22 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 #volume-up {
-    margin-left: 12px;
-    padding-bottom: 30px;
-  }
-  
+  margin-left: 12px;
+  padding-bottom: 30px;
+}
+
+.current-time {
+  font-family: "Metrophobic", sans-serif;
+  color: black;
+  font-size: 1.1rem;
+}
+
+#buttons,
+#time-slider {
+  margin-bottom: 5px;
+}
+
+.current-time,
+.current-volume {
+  margin-bottom: 3px;
+}

@@ -17,11 +17,13 @@ class Album extends Component {
       isPlaying: false,
       hover: false,
       currentTime: 0,
-      duration: album.songs[0].duration
+      duration: album.songs[0].duration,
+      volume: 0.8
     };
 
     this.audioElement = document.createElement("audio");
     this.audioElement.src = album.songs[0].audioSrc;
+    this.audioElement.volume = this.state.volume;
   }
 
   componentDidMount() {
@@ -31,6 +33,9 @@ class Album extends Component {
       },
       durationchange: e => {
         this.setState({ duration: this.audioElement.duration });
+      },
+      volumechange: e => {
+        this.setState({ volume: this.audioElement.volume });
       }
     };
 
@@ -41,6 +46,10 @@ class Album extends Component {
     this.audioElement.addEventListener(
       "durationchange",
       this.eventListeners.durationchange
+    );
+    this.audioElement.addEventListener(
+      "volumechange",
+      this.eventListeners.volumechange
     );
   }
 
@@ -53,6 +62,12 @@ class Album extends Component {
     this.audioElement.removeEventListener(
       "durationchange",
       this.eventListeners.durationchange
+    );
+
+    // ADD EVENT LISTENER???
+    this.audioElement.removeEventListener(
+      "volumechange",
+      this.eventListeners.volumechange
     );
   }
 
@@ -117,7 +132,30 @@ class Album extends Component {
     this.audioElement.currentTime = newTime;
     this.setState({ currentTime: newTime });
   }
+
+  formatTime(time) {
+    if (isNaN(time) === true || time === undefined) {
+      return "-:--";
+    }
+    let minutes = Math.floor(time / 60);
+    let seconds = time - minutes * 60;
+    minutes = minutes.toString();
+    if (seconds < 10) {
+      seconds = Math.floor(seconds.toString());
+      return minutes + ":0" + seconds;
+    } else {
+      seconds = Math.floor(seconds.toString());
+      return minutes + ":" + seconds;
+    }
+  }
+
   
+
+  handleVolumeChange(e) {
+    const newVolume = e.target.value;
+    this.audioElement.volume = newVolume;
+    this.setState({ volume: newVolume });
+  }
 
   hoverOn(index) {
     this.setState({ hover: index });
@@ -165,7 +203,7 @@ class Album extends Component {
         <table id="song-list" className="ui striped table">
           <thead>
             <tr>
-              <th>Track #</th>
+              <th>Track</th>
               <th>Title</th>
               <th>Length</th>
             </tr>
@@ -181,14 +219,16 @@ class Album extends Component {
                   onMouseLeave={() => this.hoverOff()}
                   onClick={() => this.handleSongClick(song)}
                 >
-                  <td>
+                  <td className="metadata">
                     <span>{this.handleHover(song, index)}</span>
                   </td>
-                  <td>
+                  <td className="metadata">
                     <span>{song.title}</span>
                   </td>
-                  <td>
-                    <span>{song.duration}</span>
+                  <td className="metadata">
+                    <span>{this.formatTime(song.duration)}</span>
+
+                    
                   </td>
                 </tr>
               );
@@ -200,10 +240,15 @@ class Album extends Component {
           currentSong={this.state.currentSong}
           currentTime={this.audioElement.currentTime}
           duration={this.audioElement.duration}
+          volume={this.state.volume}
+          handleVolumeChange={e => {
+            this.handleVolumeChange(e);
+          }}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
-          handleTimeChange={(e) => this.handleTimeChange(e)}
+          handleTimeChange={e => this.handleTimeChange(e)}
+          formatTime={(e) => this.formatTime(e)}
         />
       </div>
     );
