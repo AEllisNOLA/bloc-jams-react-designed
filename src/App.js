@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="ui large top fixed hidden borderless inverted menu">
+        <div className="ui large top fixed hidden borderless inverted menu" id="nav-bar">
           <nav className="ui container">
             <Link className="item" to="/">
               <img

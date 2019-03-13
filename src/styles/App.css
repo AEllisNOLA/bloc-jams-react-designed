@@ -7,3 +7,7 @@
 .nav-item {
   font-family: "Metrophobic", sans-serif;
 }
+
+#nav-bar {
+  border-bottom: 4px #ef407c solid;
+}
