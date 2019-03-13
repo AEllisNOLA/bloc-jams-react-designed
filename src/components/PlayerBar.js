@@ -1,24 +1,25 @@
 import React, { Component } from "react";
 import "../styles/PlayerBar.css";
 
-
 class PlayerBar extends Component {
   render() {
     return (
       <section className="player-bar">
         <div className="ui container">
           <section id="buttons">
-            <button id="previous">
+            <button id="previous" onClick={this.props.handlePrevClick}>
               <i className="backward icon" />
             </button>
-            <button id="play-pause">
+            
+            <button id="play-pause" onClick={this.props.handleSongClick} >
               <span>
-                <i className={this.props.isPlaying ? "pause icon" : "play icon" }/>
+                <i
+                  className={this.props.isPlaying ? "pause icon" : "play icon"}
+                />
               </span>
-
             </button>
 
-            <button id="next">
+            <button id="next" onClick={this.props.handleNextClick}>
               <i className="forward icon" />
             </button>
           </section>
@@ -32,9 +33,9 @@ class PlayerBar extends Component {
           </section>
 
           <section id="volume-control">
-            <i className="volume down icon large" />
+            <i id="volume-down" className="volume down icon large" />
             <input type="range" className="seek-bar" value="0" />
-            <i className="volume up icon large" />
+            <i id="volume-up" className="volume up icon large" />
           </section>
         </div>
       </section>
