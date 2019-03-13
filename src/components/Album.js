@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import albumData from "../data/albums";
 import "../styles/Album.css";
+import PlayerBar from "./PlayerBar";
 
 class Album extends Component {
   constructor(props) {
@@ -51,18 +52,16 @@ class Album extends Component {
 
   hoverOn(index) {
     this.setState({ hover: index });
-    console.log(`Hovering on ${index}`);
   }
 
   hoverOff() {
     this.setState({ hover: false });
-    console.log("Off");
   }
 
   handleHover(song, index) {
     const isSameSong = this.state.currentSong === song;
-    const playButton = <i id="play-button" className="play icon"></i>;
-    const pauseButton = <i id="pause-button" className="pause icon"></i>;
+    const playButton = <i className="play icon" />;
+    const pauseButton = <i className="pause icon" />;
     const trackNumber = <span>{index + 1}</span>;
 
     if (this.state.isPlaying && isSameSong) {
@@ -113,14 +112,24 @@ class Album extends Component {
                   onMouseLeave={() => this.hoverOff()}
                   onClick={() => this.handleSongClick(song)}
                 >
-                  <td><span>{this.handleHover(song, index)}</span></td>
-                  <td><span>{song.title}</span></td>
-                  <td><span>{song.duration}</span></td>
+                  <td>
+                    <span>{this.handleHover(song, index)}</span>
+                  </td>
+                  <td>
+                    <span>{song.title}</span>
+                  </td>
+                  <td>
+                    <span>{song.duration}</span>
+                  </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
+        <PlayerBar
+          isPlaying={this.state.isPlaying}
+          currentSong={this.state.currentSong}
+        />
       </div>
     );
   }
