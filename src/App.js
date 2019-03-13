@@ -4,13 +4,16 @@ import "./styles/App.css";
 import Album from "./components/Album";
 import Landing from "./components/Landing";
 import Library from "./components/Library";
-import PlayerBar from './components/PlayerBar'
+import PlayerBar from "./components/PlayerBar";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="ui large top fixed hidden borderless inverted menu" id="nav-bar">
+        <div
+          className="ui large top fixed hidden borderless inverted menu"
+          id="nav-bar"
+        >
           <nav className="ui container">
             <Link className="item" to="/">
               <img
@@ -22,13 +25,12 @@ class App extends Component {
             </Link>
             <div className="menu right">
               <Link className="item" to="/library">
-              <p className="nav-item">Library</p>
+                <p className="nav-item">Library</p>
               </Link>
             </div>
           </nav>
         </div>
 
-       
         <header>
           <nav>
             <Link to="/">Landing</Link>
